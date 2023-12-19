@@ -1,0 +1,55 @@
+﻿@model List<Unicel_init2.Models.Domain.Filters>
+
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Show All Filters</h1>
+    </div>
+</div>
+
+<div class="container">
+
+    @if (Model != null && Model.Any())
+    {
+        
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Product Name</td>
+                <td>OEMs</td>
+                <td> </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var filter in Model)
+            {
+                <tr>
+                    <td>@filter.Id</td>
+                    <td>@filter.Name</td>
+                    <td>
+                        <div class="d-flex">
+                            @foreach (var oem in filter.OEM)
+                            {
+                                <span class="badge bg-secondary me-1">@oem.Name</span>
+                            }
+                        </div>
+                    </td>
+                    <td>
+                        <a asp-area="" asp-controller="AdminFilters" asp-action="Edit" asp-route-id="@filter.Id">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    }
+    else
+    {
+        <p>No filters found.</p>
+    }
+
+</div>

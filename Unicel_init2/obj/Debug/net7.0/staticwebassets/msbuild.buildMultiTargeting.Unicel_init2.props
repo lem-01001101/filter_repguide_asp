@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Unicel_init2.props" />
+</Project>

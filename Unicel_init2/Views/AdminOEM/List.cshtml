@@ -1,0 +1,41 @@
+﻿@model List<Unicel_init2.Models.Domain.OEM>
+
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Show all OEM </h1>
+    </div>
+</div> 
+
+<div class="container py-5">
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var oem in Model)
+                {
+                    <tr>
+                        <td>@oem.Id</td>
+                        <td>@oem.Name</td>
+                        <td>
+                            <a asp-area="" asp-controller="AdminOEM" asp-action="Edit" asp-route-id="@oem.Id">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No tags found!</p>
+    }
+</div>

@@ -1,0 +1,105 @@
+﻿@model Unicel_init2.Models.ViewModels.EditFilterRequest
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Edit Filters - Admin Functionality</h1>
+    </div>
+</div>
+
+<div class="container py-5">
+    @if (Model != null)
+    {
+        <form method="post">
+        <div class="mb-3">
+            <label class="form-label"></label>
+            <input type="text" class="form-control" id="id" asp-for="Id" readonly />
+         </div>
+
+        <div class="mb-3">
+            <label class="form-label">UNICEL p/N</label>
+            <input type="text" class="form-control" id="name" asp-for="Name" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Top End Cap</label>
+            <select class="form-select" id="topEndCap" asp-for="TopEndCap">
+                <option selected>Open this select menu</option>
+                <option value="6 / Open">6" / Open</option>
+                <option value="4 / Open with molded gasket">4" / Open with molded gasket</option>
+                <option value="6 / Open with step">6" / Open with step</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Bottom End Cap</label>
+            <select class="form-select" id="bottomEndCap" asp-for="BottomEndCap">
+                <option selected>Open this select menu</option>
+                <option value="6 / Open">6" / Open</option>
+                <option value="4 / Open with molded gasket">4" / Open with molded gasket</option>
+                <option value="6 / Open with step">6" / Open with step</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Pleat Count</label>
+            <select class="form-select" id="pleatCount" asp-for="PleatCount">
+                <option selected>Open this select menu</option>
+                <option value="35">35</option>
+                <option value="131">131</option>
+                <option value="234">234</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Media</label>
+            <select class="form-select" id="media" asp-for="Media">
+                <option selected>Open this select menu</option>
+                <option value="4 oz">4 oz</option>
+                <option value="8 oz">8 oz</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" name="description" asp-for="Description" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">OD</label>
+            <select class="form-select" id="od" asp-for="OD">
+                <option selected>Open this select menu</option>
+                <option value="10-1/16">10-1/16"</option>
+                <option value="10-5/16">10-5/16"</option>
+                <option value="11">11"</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Length</label>
+            <select class="form-select" id="length" asp-for="Length">
+                <option selected>Open this select menu</option>
+                <option value="31-1/8">31-1/8"</option>
+                <option value="19-5/8">19-5/8"</option>
+                <option value="17-15/16">17-15/16"</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">OEM</label>
+            <select class="form-select" asp-items="@Model.OEM" asp-for="SelectedOEM">
+            </select>
+        </div>
+
+        <div class="mb-3 d-flex">
+            <button type="submit" class="btn btn-dark">Update</button>
+            <button type="submit" class="btn btn-danger ms-2" asp-area="" asp-controller="AdminFilters" asp-action="Delete">Delete</button>
+        </div>
+        </form>
+    }
+    else
+    {
+        <p>No filter found.</p>
+    }
+</div>

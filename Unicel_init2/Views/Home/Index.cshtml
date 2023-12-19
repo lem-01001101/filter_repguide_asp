@@ -1,0 +1,67 @@
+﻿@model List<Unicel_init2.Models.Domain.Filters>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-5 py-5">
+        <div class="col-12 col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">
+                Unicel Product Replacement Guide
+            </h1>
+            <p class="lead">
+                lorem ipsum
+            </p>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <img src="https://m.media-amazon.com/images/I/71fNQhX7fNL._AC_UF350,350_QL80_.jpg" alt="Uni" class="d-block mx-lg-auto img-fluid" width="300" />
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>UNICEL p/N</td>
+                    <td>Top End Cap</td>
+                    <td>Bottom End Cap</td>
+                    <td>Pleat Count</td>
+                    <td>Media</td>
+                    <td>Description</td>
+                    <td>OEM</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var filter in Model)
+                {
+                    <tr>
+                        <td>@filter.Name</td>
+                        <td>@filter.TopEndCap</td>
+                        <td>@filter.BottomEndCap</td>
+                        <td>@filter.PleatCount</td>
+                        <td>@filter.Media</td>
+                        <td>@filter.Description</td>
+                        <td>
+                            <div class="d-flex">
+                            @foreach (var oem in filter.OEM)
+                            {
+                                <span class="badge bg-secondary me-1">@oem.Name</span>
+                            }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <p>No products currently.</p>
+    }
+</div>
